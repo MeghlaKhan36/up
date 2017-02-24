@@ -104,7 +104,7 @@ class UserController extends Controller
             $account_status = $request->input('deactivate');
 
         }
-
+        echo $account_status;
         $account_data = array(
             $user->name = $request->input('name'),
             $user->email = $request->input('email'),
@@ -117,6 +117,6 @@ class UserController extends Controller
 
         }
 
-        return redirect('../settings/' . $user->id)->with(['status' => 'Account updated']);
+        //return redirect('../settings/' . $user->id)->with(['status' => 'Account updated']);
     }
 }
