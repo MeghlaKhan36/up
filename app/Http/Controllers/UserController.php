@@ -42,7 +42,7 @@ class UserController extends Controller
                    ->where('file_status', '=', 'public')->orderBy('created_at', 'desc')->paginate(5);
         }
 
-        return view('pages.userprofile')
+        return view('userprofile')
              ->with('files', $files)
              ->with('user', $user);
 
