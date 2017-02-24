@@ -167,7 +167,7 @@ class FileController extends Controller
         $method = "AES-256-CBC";
         $enc_pass_full = $request->input('enc_pass');
         $enc_pass = str_replace("/app/public/", "", $enc_pass_full);
-        $dest = '/public/decrypted/' . $file_name;
+        $dest = 'public/decrypted/' . $file_name;
 
         if (!is_dir('public/decrypted/')) {
           mkdir('public/decrypted', 0777, true);
