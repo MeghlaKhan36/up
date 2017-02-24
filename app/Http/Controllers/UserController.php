@@ -99,7 +99,7 @@ class UserController extends Controller
 
         $account_status = 'active';
 
-        if ( $request->input('deactivate') === '0' ) {
+        if ( $request->input('deactivate') = 0 ) {
 
             $account_status = $request->input('deactivate');
 
