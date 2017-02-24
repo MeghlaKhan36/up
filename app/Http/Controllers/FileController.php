@@ -168,6 +168,10 @@ class FileController extends Controller
         $enc_pass = $request->input('enc_pass');
         $dest = 'public/decrypted/' . $file_name;
 
+        if (!is_dir('public/decrypted/')) {
+          mkdir('public/decrypted', 0777, true);
+        }
+
         $output = fopen($dest, 'w');
         $input = fopen($enc_path, 'r');
 
