@@ -165,9 +165,8 @@ class FileController extends Controller
         $file_name = $file->org_name;
         $iv = $file->vector;
         $method = "AES-256-CBC";
-        $enc_pass_full = $request->input('enc_pass');
-        $enc_pass = str_replace("/app/public/", "", $enc_pass_full);
-        $dest = base_path() . '/public/decrypted/' . $file_name;
+        $enc_pass = $request->input('enc_pass');
+        $dest = 'public/decrypted/' . $file_name;
 
         $output = fopen($dest, 'w');
         $input = fopen($enc_path, 'r');
