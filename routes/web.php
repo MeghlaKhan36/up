@@ -11,7 +11,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('uload', 'FileController@newFile');
+    Route::get('upload', 'FileController@newFile');
     Route::post('file/create', 'FileController@create');
     Route::get('edit/file/{id}', 'FileController@updateFile');
     Route::post('save/file/{id}', 'FileController@saveUpdatedFile');
