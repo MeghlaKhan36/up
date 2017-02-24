@@ -22,7 +22,7 @@ class UserController extends Controller
     public function settings($id)
     {
         if ( $id == Auth::User()->id ) {
-            return view('pages.UpdateProfile');
+            return view('pages.updateprofile');
         } else {
             return redirect('/');
         }
