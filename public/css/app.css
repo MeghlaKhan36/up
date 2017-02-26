@@ -814,9 +814,8 @@ ul {
   margin-top: 15px;
 }
 
-.file-wrap .fa {
-  font-size: 60px;
-  font-size: 6rem;
+.file-wrap img {
+  width: 90px;
   margin-bottom: 5px;
 }
 

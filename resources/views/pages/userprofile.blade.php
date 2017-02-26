@@ -99,8 +99,7 @@
         <h2 class="file-count">{{ $files->count() }} files: </h2>
         <div class="files-display">
         @foreach($files as $file)
-          <div class="file-wrap" data-src="..download/{{ $file->id }}">
-            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+          <div class="file-wrap" data-src="..download/{{ $file->id }}" data-type="{{ $file->file_type }}">
             <h1>{{ $file->title }}</h1>
             <p>On: {{ $file->created_at->format('d-M-Y') }}</p>
             <div class="options">

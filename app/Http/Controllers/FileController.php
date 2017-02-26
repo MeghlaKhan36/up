@@ -27,8 +27,6 @@ class FileController extends Controller
 
         $file = $request->file('file');
         $fileType = $request->file('file')->getClientOriginalExtension();
-
-        echo $fileType;
         $randomStr = substr(md5(rand()), 0, 3);
         $fileOrgName = $request->file('file')->getClientOriginalName();
 
@@ -85,6 +83,7 @@ class FileController extends Controller
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'author_id' => Auth::user()->id,
+            'file_type' => $fileType,
             'filesize' => $file->getClientSize(),
             'path' => $path,
             'file_status' => $request->input('file_status'),
