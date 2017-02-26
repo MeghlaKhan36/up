@@ -20,7 +20,7 @@ class FileController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'description' => 'max:30',
+            'description' => 'required|max:30',
             'file' => 'required|file|max:100024',
             'file_status' => 'required'
         ]);

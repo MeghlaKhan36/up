@@ -93,8 +93,6 @@
           <h1 class="main-heading">My profile</h1>
         @else
           <h1 class="main-heading">{{ $user->name }}'s profile</h1>
-          <h2 class="user-credentials">{{ $user->first_name }} {{ $user->last_name }}</h2>
-          <h2 class="user-credentials">{{ $user->email }}</h2>
         @endif
         <h2 class="file-count">{{ $files->count() }} files: </h2>
         <div class="files-display">
