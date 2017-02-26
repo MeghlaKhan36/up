@@ -13,7 +13,7 @@
                     <i class="fa fa-bars" aria-hidden="true"></i>
                     <span>Menu</span>
                 </div>
-                <nav id="home-nav" class="navigation">
+                <nav id="home-nav">
                   <ul>
                     <li><a href="/">Home</a></li>
                     @if (!Auth::user())
