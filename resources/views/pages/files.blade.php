@@ -2,22 +2,19 @@
 
 @section('sidebar')
     <div class="user-info-wrap">
-        <h1 id="page-logo">
-            <a href="/">
-                <img src="../../images/logo.svg" alt="Up!">
-            </a>
-        </h1>
         <div class="sidebar-content">
-            <div class="user-display">
-                <a class="username" href="../../user/{{ Auth::user()->id }}">
-                    @if (Auth::user()->profile_picture_path === null)
-                        <img class="profile-picture" src="../../{{ Auth::user()->profile_picture }}" alt="Profile picture" />
-                        <h1>{{ Auth::user()->name }}</h1>
-                    @else
-                        <img class="profile-picture" src="../../{{ Auth::user()->profile_picture_path }}" alt="Profile picture" />
-                    @endif
-                </a>
-            </div>
+            @if ( Auth::user() )
+                <div class="user-display">
+                    <a class="username" href="user/{{ Auth::user()->id }}">
+                        @if (Auth::user()->profile_picture_path === null)
+                            <img class="profile-picture" src="{{ Auth::user()->profile_picture }}" alt="Profile picture" />
+                            <h1>{{ Auth::user()->name }}</h1>
+                        @else
+                            <img class="profile-picture" src="{{ Auth::user()->profile_picture_path }}" alt="Profile picture" />
+                        @endif
+                    </a>
+                </div>
+            @endif
             <div id="mobile-nav">
                 <div class="mobile-icon">
                     <i class="fa fa-bars" aria-hidden="true"></i>
@@ -39,13 +36,13 @@
                         </a>
                       </li>
                       <li>
-                        <a href="/files">
+                        <a class="active" href="/files">
                           <i class="fa fa-file-o" aria-hidden="true"></i>
                           Files
                         </a>
                       </li>
                       <li>
-                        <a class="active" href="/messages/{{ Auth::user()->id }}">
+                        <a href="/messages/{{ Auth::user()->id }}">
                           <i class="fa fa-envelope" aria-hidden="true"></i>
                           Messages
                         </a>
@@ -60,7 +57,7 @@
                       <li>
                         <a class="active" href="/settings/files/{{ Auth::user()->id }}">
                           <i class="fa fa-cog" aria-hidden="true"></i>
-                          Edit files
+                          Edit Files
                         </a>
                       </li>
                       <li>
@@ -78,35 +75,60 @@
 
 @section('content')
     <div class="container">
-        <div class="inbox-container">
-            <div class="message-info">
-                <h1>Subject: {{ $message->subject }}</h1>
-                <h2>Sent by: {{ $message->user->name }}</h2>
-                <h2>Recipient: {{ $user->name }}</h2>
-                <h2>Date sent: {{ $message->created_at }}</h2>
-                <h1 class="message-heading">Message: </h1>
-            </div>
+        @if ( Session::has('status') )
+            <script>swal("Not allowed", '{!! session('status') !!}', "error")</script>
+        @endif
 
-            <table class="files-table">
+        @if ( !Auth::user() )
+            <h1 class="main-heading home">Welcome!</h1>
+            <h2 class="main-heading2">Free file hosting and storage</h2>
+            <p class="site-desc">Share your files securely</p>
+        @endif
+
+        <form class="search" method="GET" action="search/user">
+            {{ csrf_field() }}
+            <input id="search" type="text" name="search" value="" placeholder="&#xf002; Search">
+        </form>
+
+        <h1 class="main-heading">Recently uploaded files</h1>
+        <table class="files-table recent-files">
+            <thead>
                 <tr class="table-heading">
-                    <th class="table-title">File</th>
-                    <th class="table-desc">Description</th>
-                    <th class="table-size">Size</th>
-                    <th class="table-action">Action</th>
+                    <th class="sortable table-title">Title</th>
+                    <th class="sortable table-desc">Description</th>
+                    <th class="sortable table-author">Author</th>
+                    <th class="sortable table-size">Size (kb)</th>
+                    <th class="sortable table-date">
+                        Date uploaded
+                        <i class='fa fa-caret-down' aria-hidden='true'></i>
+                    </th>
+                    <th class="no-sort table-action">Action</th>
                 </tr>
+            </thead>
+            <tbody>
+            @foreach($files as $file)
                 <tr>
                     <td class="table-title">{{ $file->title }}</td>
                     <td class="table-desc">{{ $file->description }}</td>
-                    <td class="table-size">{{ $file->filesize }}</td>
+                    <td class="table-author"><a class="table-username" href="user/{{ $file->user->id }}">{{ $file->user->name }}</a></td>
+                    <td class="table-size">{{ calcSize($file->filesize) }}</td>
+                    <td class="table-date">{{ $file->created_at->format('d-M-Y') }}</td>
                     <td class="table-action">
-                        <a class="table-icon download" href="../../download/{{ $file->id }}">
+                        <a class="table-icon download" href="download/{{ $file->id }}">
                             <span class="icon-download">Download</span>
                             <i class="fa fa-download" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>
-            </table>
-            <p class="content">{{ $message->message }}</p>
-        </div>
+            @endforeach
+            </tbody>
+        </table>
+
+        @include('pagination.paginate', ['pagination' => $files])
+
     </div>
+@endsection
+
+@section('scripts')
+    <script src="/js/sorting.js"></script>
 @endsection

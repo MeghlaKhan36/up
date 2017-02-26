@@ -98,6 +98,23 @@ class FileController extends Controller
 
     }
 
+    public function settings($id)
+    {
+
+
+        if ( Auth::user() && Auth::user()->id = $id ) {
+
+          $files = File::where('author_id', '=', $id)->paginate(25);
+
+          return view('pages.filesettings', compact('files'));
+
+        } else {
+
+          return redirect('/user/' . Auth::user()->id);
+
+        }
+    }
+
     public function updateFile($id)
     {
         $file = File::find($id);

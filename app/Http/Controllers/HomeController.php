@@ -8,17 +8,17 @@ use Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function home()
+    {
+        return view('home');
+    }
+
+    public function recentFiles()
     {
 
-        $files = File::where('file_status', '=', 'public')->orderBy('created_at', 'desc')->take(10)->get();
+        $files = File::where('file_status', '=', 'public')->orderBy('created_at', 'desc')->paginate(25);
 
-        return view('home')
+        return view('pages.files')
             ->with('files', $files);
     }
 }

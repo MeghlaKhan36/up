@@ -34,12 +34,12 @@ class UserController extends Controller
 
         if ( Auth::user()->id == $id ) {
 
-            $files = File::where('author_id', '=', $id)->orderBy('created_at', 'desc')->paginate(5);
+            $files = File::where('author_id', '=', $id)->orderBy('created_at', 'desc')->paginate(25);
 
         } else {
 
             $files = File::where('author_id', '=', $id)
-                   ->where('file_status', '=', 'public')->orderBy('created_at', 'desc')->paginate(5);
+                   ->where('file_status', '=', 'public')->orderBy('created_at', 'desc')->paginate(25);
         }
 
         return view('pages.userprofile')

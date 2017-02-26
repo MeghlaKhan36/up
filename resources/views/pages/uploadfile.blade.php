@@ -24,32 +24,51 @@
                     <span>Menu</span>
                 </div>
                 <nav class="navigation">
-                    <ul>
-                        <li><a href="upload">
-                                <i class="fa fa-upload" aria-hidden="true"></i>
-                                Add file
-                            </a>
-                        </li>
-                        <li><a href="user/{{ Auth::user()->id }}">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                My Profile
-                            </a>
-                        </li>
-                        <li><a href="messages/{{ Auth::user()->id }}">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                Messages
-                            </a>
-                        </li>
-                        <li><a href="settings/{{ Auth::user()->id }}">
-                                <i class="fa fa-cog" aria-hidden="true"></i>
-                                Settings
-                            </a>
-                        </li>
-                        <li><a href="{{ route('logout') }}">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                Logout
-                            </a>
-                        </li>
+                  <ul>
+                      <h1 class="nav-section">Main</h1>
+                      <li>
+                        <a href="/">
+                          <i class="fa fa-home" aria-hidden="true"></i>
+                          Home
+                        </a>
+                      </li>
+                      <li>
+                        <a class="active" href="/upload">
+                          <i class="fa fa-upload" aria-hidden="true"></i>
+                          Add file
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/files">
+                          <i class="fa fa-file-o" aria-hidden="true"></i>
+                          Files
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/messages/{{ Auth::user()->id }}">
+                          <i class="fa fa-envelope" aria-hidden="true"></i>
+                          Messages
+                        </a>
+                      </li>
+                      <h1 class="nav-section">Admin</h1>
+                      <li>
+                        <a href="/settings/{{ Auth::user()->id }}">
+                          <i class="fa fa-cog" aria-hidden="true"></i>
+                          Settings
+                        </a>
+                      </li>
+                      <li>
+                        <a class="active" href="/settings/files/{{ Auth::user()->id }}">
+                          <i class="fa fa-cog" aria-hidden="true"></i>
+                          Edit files
+                        </a>
+                      </li>
+                      <li>
+                        <a href="{{ route('logout') }}">
+                          <i class="fa fa-sign-out" aria-hidden="true"></i>
+                          Logout
+                        </a>
+                      </li>
                     </ul>
                 </nav>
             </div>

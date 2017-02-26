@@ -25,17 +25,12 @@
     </script>
 </head>
 <body>
-    <section id="user-info">
-        @yield('sidebar')
-    </section>
-    <section class="page-wrap">
-      <div id="page-content">
-          <noscript>
-              <p class="noscript-info">To use this application, please enable JavaScript</p>
-              <a class="noscript-link" href="http://www.quackit.com/javascript/tutorial/how_to_enable_javascript.cfm">How to enable JavaScript</a>
-          </noscript>
-          @yield('content')
-      </div>
+    <section id="homepage">
+        <noscript>
+            <p class="noscript-info">To use this application, please enable JavaScript</p>
+            <a class="noscript-link" href="http://www.quackit.com/javascript/tutorial/how_to_enable_javascript.cfm">How to enable JavaScript</a>
+        </noscript>
+        @yield('content')
     </section>
     <!-- Scripts -->
     <script src="/js/app.js"></script>
