@@ -6,11 +6,12 @@
         <div class="home-navigation">
           <div class="wrapper">
             <div class="logo">
-              <img src="images/logo.svg" alt="Up">
+              <a href="/">
+                <img src="images/logo.svg" alt="Up">
+              </a>
             </div>
             <nav id="home-nav">
               <ul>
-                <li><a href="/">Home</a></li>
                 @if (!Auth::user())
                 <li><a href="login">Login</a></li>
                 @else
