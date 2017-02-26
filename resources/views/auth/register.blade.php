@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.home-layout')
 
 @section('sidebar')
     <div class="user-info-wrap">

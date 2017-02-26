@@ -26,7 +26,9 @@ class FileController extends Controller
         ]);
 
         $file = $request->file('file');
+        $fileType = $request->file('file')->getClientOriginalExtension();
 
+        echo $fileType;
         $randomStr = substr(md5(rand()), 0, 3);
         $fileOrgName = $request->file('file')->getClientOriginalName();
 

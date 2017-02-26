@@ -418,6 +418,11 @@ ul {
     color: #c9dae7;
 }
 
+#auth-view {
+  text-align: center;
+  margin-top: 100px;
+}
+
 @media screen and (max-width: 960px) {
     #mobile-nav {
         display: block;
