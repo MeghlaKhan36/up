@@ -1,7 +1,7 @@
 @extends('layouts.home-layout')
 
 @section('content')
-  <div class="auth-view">
+  <div id="auth-view">
     <div class="container">
         <div class="form-container">
             <form class="auth-form" role="form" method="POST" action="{{ route('register') }}">

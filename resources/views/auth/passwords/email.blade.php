@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="auth-view">
+  <div id="auth-view">
     <div class="container">
         <div class="form-container">
             @if (session('status'))
