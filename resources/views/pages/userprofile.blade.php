@@ -28,11 +28,16 @@
                 <nav class="navigation">
                   <ul>
                       <h1 class="nav-section">Main</h1>
-                  @if ( Auth::user() )
                       <li>
                         <a href="/">
                           <i class="fa fa-home" aria-hidden="true"></i>
                           Home
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/user/{{ Auth::user()->id }}">
+                          <i class="fa fa-user" aria-hidden="true"></i>
+                          My profile
                         </a>
                       </li>
                       <li>
@@ -72,20 +77,6 @@
                           Logout
                         </a>
                       </li>
-                    @else
-                      <li>
-                        <a href="{{ route('login') }}">
-                          <i class="fa fa-sign-in" aria-hidden="true"></i>
-                          Login
-                        </a>
-                      </li>
-                      <li>
-                        <a href="{{ route('register') }}">
-                          <i class="fa fa-user-plus" aria-hidden="true"></i>
-                          Register
-                        </a>
-                      </li>
-                    @endif
                     </ul>
                 </nav>
             </div>

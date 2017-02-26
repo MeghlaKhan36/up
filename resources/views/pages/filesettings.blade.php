@@ -2,6 +2,11 @@
 
 @section('sidebar')
     <div class="user-info-wrap">
+        <h1 id="page-logo">
+            <a href="/">
+                <img src="../images/logo.svg" alt="Up!">
+            </a>
+        </h1>
         <div class="sidebar-content">
             @if ( Auth::user() )
                 <div class="user-display">
