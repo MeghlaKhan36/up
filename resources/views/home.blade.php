@@ -8,18 +8,24 @@
             <div class="logo">
               <img src="images/logo.svg" alt="Up">
             </div>
-            <nav id="home-nav">
-              <ul>
-                <li><a href="/">Home</a></li>
-                @if (!Auth::user())
-                <li><a href="login">Login</a></li>
-                @else
-                <li><a href="files">Files</a></li>
-                <li><a href="user/{{ Auth::user()->id }}">My profile</a></li>
-                <li><a href="logout">Logout</a><li>
-                @endif
-              </ul>
-            </nav>
+            <div id="mobile-nav">
+                <div class="mobile-icon">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                    <span>Menu</span>
+                </div>
+                <nav id="home-nav" class="navigation">
+                  <ul>
+                    <li><a href="/">Home</a></li>
+                    @if (!Auth::user())
+                    <li><a href="login">Login</a></li>
+                    @else
+                    <li><a href="files">Files</a></li>
+                    <li><a href="user/{{ Auth::user()->id }}">My profile</a></li>
+                    <li><a href="logout">Logout</a><li>
+                    @endif
+                  </ul>
+                </nav>
+              </div>
           </div>
         </div>
         <div class="content-wrap">
