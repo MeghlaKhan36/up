@@ -33,6 +33,12 @@
                         </a>
                       </li>
                       <li>
+                        <a href="/user/{{ Auth::user()->id }}">
+                          <i class="fa fa-user" aria-hidden="true"></i>
+                          My profile
+                        </a>
+                      </li>
+                      <li>
                         <a class="active" href="/upload">
                           <i class="fa fa-upload" aria-hidden="true"></i>
                           Add file
