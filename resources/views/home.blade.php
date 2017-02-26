@@ -14,6 +14,7 @@
                 @if (!Auth::user())
                 <li><a href="login">Login</a></li>
                 @else
+                <li><a href="files">Files</a></li>
                 <li><a href="user/{{ Auth::user()->id }}">My profile</a></li>
                 <li><a href="logout">Logout</a><li>
                 @endif
