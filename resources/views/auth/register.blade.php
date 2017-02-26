@@ -1,32 +1,7 @@
 @extends('layouts.home-layout')
 
-@section('sidebar')
-    <div class="user-info-wrap">
-        <h1 id="page-logo">
-            <a href="/">
-                <img src="images/logo.svg" alt="Up!">
-            </a>
-        </h1>
-        <div class="sidebar-content">
-            <nav>
-                <ul>
-                    <li><a href="{{ route('login') }}">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i>
-                            Login
-                        </a>
-                    </li>
-                    <li><a href="{{ route('register') }}">
-                            <i class="fa fa-user-plus" aria-hidden="true"></i>
-                            Register
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-@endsection
-
 @section('content')
+  <div class="auth-view">
     <div class="container">
         <div class="form-container">
             <form class="auth-form" role="form" method="POST" action="{{ route('register') }}">
@@ -87,4 +62,5 @@
         </div>
 
     </div>
+  </div>
 @endsection
