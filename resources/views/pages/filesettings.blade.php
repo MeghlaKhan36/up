@@ -4,7 +4,7 @@
     <div class="user-info-wrap">
         <h1 id="page-logo">
             <a href="/">
-                <img src="../images/logo.svg" alt="Up!">
+                <img src="../../images/logo.svg" alt="Up!">
             </a>
         </h1>
         <div class="sidebar-content">
@@ -12,10 +12,10 @@
                 <div class="user-display">
                     <a class="username" href="user/{{ Auth::user()->id }}">
                         @if (Auth::user()->profile_picture_path === null)
-                            <img class="profile-picture" src="{{ Auth::user()->profile_picture }}" alt="Profile picture" />
+                            <img class="profile-picture" src="../../{{ Auth::user()->profile_picture }}" alt="Profile picture" />
                             <h1>{{ Auth::user()->name }}</h1>
                         @else
-                            <img class="profile-picture" src="{{ Auth::user()->profile_picture_path }}" alt="Profile picture" />
+                            <img class="profile-picture" src="../../{{ Auth::user()->profile_picture_path }}" alt="Profile picture" />
                         @endif
                     </a>
                 </div>
