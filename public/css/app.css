@@ -298,6 +298,13 @@ ul {
 
 .preview-image-wrap img {
   width: 80%;
+  min-width: 300px;
+}
+
+@media screen and (max-width: 640px) {
+  .preview-image-wrap img {
+    display: none;
+  }
 }
 
 .user-links {
