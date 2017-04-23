@@ -29,7 +29,7 @@ class RegisterController extends Controller
      */
      public function authenticated($request, $user)
      {
-         return redirect('/user/' . $user->id);
+         return redirectTo('/user/' . $user->id);
      }
 
     /**
