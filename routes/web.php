@@ -10,6 +10,8 @@ Route::get('/home', 'HomeController@home');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('files', 'HomeController@recentFiles');
 
+    Route::get('mail', 'HomeController@mail');
+
     Route::post('/sendmail', function (\Illuminate\Http\Request $request, \Illuminate\Mail\Mailer $mailer) {
       $mailer->to($request->input('mail'))->send(new \App\Mail\MyMail($request->input('title')));
       return redirect()->back();
