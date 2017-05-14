@@ -5,9 +5,15 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/', 'HomeController@home');
+Route::get('/home', 'HomeController@home');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('files', 'HomeController@recentFiles');
+
+    Route::post('/sendmail', function (\Illuminate\Http\Request $request, \Illuminate\Mail\Mailer $mailer) {
+      $mailer->to($request->input('mail'))->send(new \App\Mail\MyMail($request->input('title')));
+      return redirect()->back();
+    })->name('sendmail');
 
     Route::get('download/{id}', 'FileController@download');
     Route::get('upload', 'FileController@newFile');
@@ -30,5 +36,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('settings/{id}', 'UserController@settings');
     Route::put('profile/update/{id}', 'UserController@updateProfile');
     Route::post('account/update/{id}', 'UserController@updateAccount');
-    Route::get('settings/{id}', 'UserController@settings');
+
 });
