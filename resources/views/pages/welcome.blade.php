@@ -2,6 +2,7 @@
 
 @section('content')
     <form action="{{ route('sendmail') }}" method="post">
+      {{ csrf_field() }}
       <input type="email" name="mail" placeholder="email address">
       <input type="text" name="title" placeholder="title">
       <button type="submit">Send me an Email</button>
