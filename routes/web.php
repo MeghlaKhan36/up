@@ -11,9 +11,7 @@ Route::get('/home', 'HomeController@home');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('files', 'HomeController@recentFiles');
 
-    Route::get('mail', 'HomeController@mail');
-
-    Route::post('/sendmail', function () {
+    Route::get('/mail', function () {
       Mail::send('email.mymail', ['name' => 'nc'], function($message) {
         $message->to('nikola.cerovski@gmail.com', 'Some guy')->subject('Welcome!');
       });
