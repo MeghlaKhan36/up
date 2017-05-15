@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Suppoert\Facades\Mail;
+use Illuminate\Support\Facades\Mail;
 
 Auth::routes();
 
