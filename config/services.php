@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => env('api.mailgun.net/v3/infinite-plains-55198.herokuapp.com'),
+        'secret' => env('key-b425c9c3cb69ac8ab6c8114188d04d22'),
     ],
 
     'ses' => [
