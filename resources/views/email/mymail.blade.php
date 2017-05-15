@@ -8,6 +8,6 @@
 </head>
 <body>
   <h1>You got Mail</h1>
-  <p>{{ $title }}</p>
+  <p>{{ $name }}</p>
 </body>
 </html>

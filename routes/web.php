@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Suppoert\Facades\Mail;
 
 Auth::routes();
 
@@ -12,10 +13,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('mail', 'HomeController@mail');
 
-    Route::post('/sendmail', function (\Illuminate\Http\Request $request, \Illuminate\Mail\Mailer $mailer) {
-      $mailer->to($request->input('mail'))->send(new \App\Mail\MyMail($request->input('title')));
-      return redirect()->back();
-    })->name('sendmail');
+    Route::post('/sendmail', function () {
+      Mail::send('email.mymail', ['name' => 'nc'], function($message) {
+        $message->to('nikola.cerovski@gmail.com', 'Some guy')->subject('Welcome!');
+      });
+    });
 
     Route::get('download/{id}', 'FileController@download');
     Route::get('upload', 'FileController@newFile');
