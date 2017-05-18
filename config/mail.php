@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'support@upheroku.com'),
-        'name' => env('MAIL_FROM_NAME', 'Support'),
+        'name' => env('MAIL_FROM_NAME', 'Up'),
     ],
 
     /*
@@ -101,7 +101,7 @@ return [
 
     'sendmail' => '/usr/sbin/sendmail -bs',
 
-    'pretend' -> false,
+    'pretend' => false,
 
     /*
     |--------------------------------------------------------------------------

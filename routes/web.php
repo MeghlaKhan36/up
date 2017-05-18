@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 
 Auth::routes();
 
@@ -10,12 +9,6 @@ Route::get('/home', 'HomeController@home');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('files', 'HomeController@recentFiles');
-
-    Route::get('/mail', function () {
-      Mail::send('email.mymail', ['name' => 'nc'], function($message) {
-        $message->to('nikola.cerovski@gmail.com', 'Some guy')->subject('Welcome!');
-      });
-    });
 
     Route::get('download/{id}', 'FileController@download');
     Route::get('upload', 'FileController@newFile');

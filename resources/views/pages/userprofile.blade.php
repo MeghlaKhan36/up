@@ -98,7 +98,7 @@
         <div class="files-display">
         @foreach($files as $file)
           <div class="file-wrap" data-src="..download/{{ $file->id }}" data-type="{{ $file->file_type }}">
-            <h1>{{ $file->title }}</h1>
+            <h1>{{ $file->org_name }}</h1>
             <p>On: {{ $file->created_at->format('d-M-Y') }}</p>
             <div class="options">
               @if ( Auth::user() && Auth::user()->id === $user->id )

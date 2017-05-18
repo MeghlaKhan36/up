@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use App\Mail\MyMail;
 use App\File;
 use App\User;
 use App\Message;
@@ -27,7 +29,7 @@ class MessageController extends Controller
         $sender_id = Auth::user()->id;
         $receiver_id = $request->input('users');
         $file_id = $id;
-        $message = $request->input('message');
+        $message_text = $request->input('message');
 
         $file = new Message(array(
             'subject' => $subject,
@@ -36,10 +38,18 @@ class MessageController extends Controller
             'receiver_deleted' => 0,
             'receiver_id' => $receiver_id,
             'file_id' => $file_id,
-            'message' => $message
+            'message' => $message_text
         ));
 
         $file->save();
+
+        $title = 'Up - new message';
+        $sender_user = User::find($sender_id);
+        $receiver_user = User::find($receiver_id);
+        $file_name = File::find($file_id)->org_name;
+        $download_url = 'https://infinite-plains-55198/download/' . $file_id;
+
+        Mail::to($receiver_user->email)->send(new MyMail($sender_user->name, $receiver_user->name, $file_name, $message_text, $download_url));
 
         return redirect('/messages/' . $sender_id)->with('status', 'Message sent successfully');
     }
