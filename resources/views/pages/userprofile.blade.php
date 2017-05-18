@@ -88,6 +88,9 @@
     @if ( Session::has('status') )
         <script>swal("Success!", '{!! session('status') !!}', "success")</script>
     @endif
+    @if ( Session::has('error') )
+        <script>swal("Sorry", '{!! session('error') !!}', "error")</script>
+    @endif
     <div class="wrapper">
         @if ( Auth::user()->id === $user->id )
           <h1 class="main-heading">My profile</h1>

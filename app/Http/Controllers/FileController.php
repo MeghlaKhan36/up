@@ -155,13 +155,10 @@ class FileController extends Controller
               $file_path = $file->path;
               unlink($file_path);
               $file->delete();
-              return redirect('/user/' . $user_id)->with(['status' => 'File deleted']);
           }
 
         } else {
           $file->delete();
-          return redirect('/user/' . $user_id)->with(['status' => 'File not found :(']);
-
         }
 
     }
@@ -169,13 +166,21 @@ class FileController extends Controller
     public function download(Request $request, $id)
     {
         $file = File::find($id);
+        $user_id = $file->user->id;
 
-        if ($file->enc_status === 'encrypt')
-        {
-            return view('pages.decryptfile', compact('file'));
+        if ( file_exists($file->path) ) {
+
+          if ($file->enc_status === 'encrypt')
+          {
+              return view('pages.decryptfile', compact('file'));
+          } else {
+              return response()->download($file->path);
+          }
+
         } else {
-            return response()->download($file->path);
+          return redirect('../user/' . $user_id)->with(['error' => 'File was not found']);
         }
+
     }
 
     /**

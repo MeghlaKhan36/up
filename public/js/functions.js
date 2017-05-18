@@ -55,8 +55,11 @@ $(document).ready(function() {
     });
 
     $('.file-name').each(function() {
-      $(this).text(str.substring(1,4));
-    }
+      var str = $(this).text();
+      if ( str.length > 10 ) {
+        $(this).text(str.substring(0,10) + '...');
+      }
+    });
 
     $('.file-wrap').each(function() {
       var type = $(this).attr('data-type');
