@@ -149,13 +149,21 @@ class FileController extends Controller
         $file = File::find($id);
         $user_id = $file->user->id;
 
-        if (Gate::forUser(Auth::user())->allows('temper', $file)) {
-            $file_path = $file->path;
-            unlink($file_path);
-            $file->delete();
+        if ( file_exists($file->path) ) {
+
+          if (Gate::forUser(Auth::user())->allows('temper', $file)) {
+              $file_path = $file->path;
+              unlink($file_path);
+              $file->delete();
+              return redirect('/user/' . $user_id)->with(['status' => 'File deleted']);
+          }
+
+        } else {
+          $file->delete();
+          return redirect('/user/' . $user_id)->with(['status' => 'File not found :(']);
+
         }
 
-        return redirect('/user/' . $user_id)->with(['status' => 'File deleted']);
     }
 
     public function download(Request $request, $id)

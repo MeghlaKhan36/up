@@ -12,10 +12,10 @@
                 <div class="user-display">
                     <a class="username" href="user/{{ Auth::user()->id }}">
                         @if (Auth::user()->profile_picture_path === null)
-                            <img class="profile-picture" src="{{ Auth::user()->profile_picture }}" alt="Profile picture" />
+                            <img class="profile-picture" src="../../{{ Auth::user()->profile_picture }}" alt="Profile picture" />
                             <h1>{{ Auth::user()->name }}</h1>
                         @else
-                            <img class="profile-picture" src="{{ Auth::user()->profile_picture_path }}" alt="Profile picture" />
+                            <img class="profile-picture" src="../../{{ Auth::user()->profile_picture_path }}" alt="Profile picture" />
                         @endif
                     </a>
                 </div>
@@ -109,11 +109,11 @@
                     <td class="table-size">{{ calcSize($file->filesize) }}</td>
                     <td class="table-date">{{ $file->created_at->format('d-M-Y') }}</td>
                     <td class="table-action">
-                        <a class="table-icon edit" href="../../edit/file/{{ $file->id }}">
+                        <a class="table-icon edit" href="/edit/file/{{ $file->id }}">
                             <span class="icon-edit">Edit</span>
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </a>
-                        <a class="table-icon delete" href="../../delete/file/{{ $file->id }}" data-url="../../delete/file/{{ $file->id }}">
+                        <a class="table-icon delete" href="../../delete/file/{{ $file->id }}">
                             <span class="icon-delete">Edit</span>
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>

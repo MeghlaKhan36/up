@@ -34,6 +34,7 @@ $(document).ready(function() {
     $('.table-icon.delete').on('click', function(e) {
         e.preventDefault();
         var file = $(this);
+        console.log($(file).attr('href'));
         swal({
                 title: "Delete",
                 text: "You will not be able to access the file again",
@@ -47,11 +48,15 @@ $(document).ready(function() {
                 if ( isConfirm ) {
                     file.parent().parent().hide();
                     $.ajax({
-                        url: $(file).attr('data-url')
+                        url: $(file).attr('href')
                     });
                 }
             });
     });
+
+    $('.file-name').each(function() {
+      $(this).text(str.substring(1,4));
+    }
 
     $('.file-wrap').each(function() {
       var type = $(this).attr('data-type');

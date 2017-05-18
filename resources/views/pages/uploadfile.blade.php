@@ -149,7 +149,7 @@
                             <input id="enc_status" type="radio" name="enc_status" value="encrypt"> Encrypt with OpenSSL
                         </label>
                         <label for="enc_pass">
-                            <input id="enc_pass" type="text" class="form-control" name="enc_pass" value="" placeholder="Encryption password">
+                            <input id="enc_pass" type="password" class="form-control" name="enc_pass" value="" placeholder="Encryption password">
                         </label>
                     </div>
                 </div>

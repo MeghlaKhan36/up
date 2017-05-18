@@ -95,7 +95,7 @@
 
                 <div class="form-group{{ $errors->has('enc_pass') ? ' has-error' : '' }}">
                     <p class="wrapper">
-                        <input id="enc_pass" type="text" class="form-control" name="enc_pass" value="{{ old('enc_pass') }}" placeholder="&#xf13e Decrypt password">
+                        <input id="enc_pass" type="password" class="form-control" name="enc_pass" value="{{ old('enc_pass') }}" placeholder="&#xf13e Decrypt password">
                     </p>
                     @if ($errors->has('enc_pass'))
                         <span class="help-block">
