@@ -47,11 +47,11 @@ class MessageController extends Controller
         $sender_user = User::find($sender_id);
         $receiver_user = User::find($receiver_id);
         $file_name = File::find($file_id)->org_name;
-        $download_url = 'https://infinite-plains-55198/download/' . $file_id;
+        $download_url = 'https://infinite-plains-55198.herokuapp.com/download/' . $file_id;
 
         Mail::to($receiver_user->email)->send(new MyMail($sender_user->name, $receiver_user->name, $file_name, $message_text, $download_url));
 
-        return redirect('/messages/' . $sender_id)->with('status', 'Message sent successfully');
+        return redirect('/messages/' . $sender_id)->with('status', 'Message sent!');
     }
 
     public function messageInbox($id)
