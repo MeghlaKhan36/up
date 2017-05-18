@@ -26,10 +26,9 @@ class FileController extends Controller
         ]);
 
         $file = $request->file('file');
-        $fileOrgName_ext = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-        $fileOrgName = substr($fileOrgName_ext, 0, 10).'...';
         $fileType = $request->file('file')->getClientOriginalExtension();
         $randomStr = substr(md5(rand()), 0, 3);
+        $fileOrgName = $request->file('file')->getClientOriginalName();
 
         /**
          * Encrypts the file
