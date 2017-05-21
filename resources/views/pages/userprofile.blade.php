@@ -93,25 +93,31 @@
     @endif
     <div class="wrapper">
         @if ( Auth::user()->id === $user->id )
-          <h1 class="main-heading">My profile</h1>
+          <h1 class="main-heading">My storage</h1>
         @else
           <h1 class="main-heading">{{ $user->name }}'s profile</h1>
         @endif
         <h2 class="file-count">{{ $files->count() }} files: </h2>
         <div class="files-display">
         @foreach($files as $file)
+          @if ( $file->enc_status === 'encrypt' )
+          <div class="file-wrap" data-src="..download/{{ $file->id }}" data-type="{{ $file->file_type }}" data-enc="secure">
+          @else
           <div class="file-wrap" data-src="..download/{{ $file->id }}" data-type="{{ $file->file_type }}">
-            <h1 class="file-name">{{ $file->org_name }}</h1>
-            <p>On: {{ $file->created_at->format('d-M-Y') }}</p>
+          @endif
+            <div class="file-main">
+              <a class="file-anchor" href="../download/{{ $file->id }}">
+                <h1 class="file-name">{{ $file->org_name }}</h1>
+              </a>
+              <p>{{ $file->created_at->format('d-M-Y') }}</p>
+            </div>
             <div class="options">
               @if ( Auth::user() && Auth::user()->id === $user->id )
               <a class="table-icon share" href="../share/file/{{ $file->id }}">
-                  <i class="fa fa-share" aria-hidden="true"></i>
+                  Share
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
               </a>
               @endif
-              <a class="table-icon download" href="../download/{{ $file->id }}">
-                  <i class="fa fa-download" aria-hidden="true"></i>
-              </a>
             </div>
           </div>
         @endforeach

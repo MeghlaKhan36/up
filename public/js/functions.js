@@ -56,17 +56,17 @@ $(document).ready(function() {
 
     $('.file-name').each(function() {
       var str = $(this).text();
-      if ( str.length > 10 ) {
-        $(this).text(str.substring(0,10) + '...');
+      if ( str.length > 25 ) {
+        $(this).text(str.substring(0,25) + '...');
       }
     });
 
     $('.file-wrap').each(function() {
       var type = $(this).attr('data-type');
-      var file = $(this);
+      var file = $(this).find('.file-anchor');
       switch(type) {
        case type = 'png':
-        $(file).prepend("<img src='../images/files/picture.svg' alt='image'>");
+        $(file).prepend("<a href=<img src='../images/files/picture.svg' alt='image'>");
         break;
        case type = 'jpg':
         $(file).prepend("<img src='../images/files/picture.svg' alt='image'>");
@@ -96,13 +96,13 @@ $(document).ready(function() {
         $(file).prepend("<img src='../images/files/video.svg' alt='video-format'>");
         break;
        case type = 'waw':
-        $(file).prepend("<img src='../images/files/music.svg' alt='music-format'>");
+        $(file).prepend("<img src='../images/files/music-player.svg' alt='music-format'>");
         break;
        case type = 'mp3':
-        $(file).prepend("<img src='../images/files/music.svg' alt='music'>");
+        $(file).prepend("<img src='../images/files/music-player.svg' alt='music'>");
         break;
        case type = 'webm':
-        $(file).prepend("<img src='../images/files/music.svg' alt='music'>");
+        $(file).prepend("<img src='../images/files/music-player.svg' alt='music'>");
         break;
        case type = 'rar':
         $(file).prepend("<img src='../images/files/musicrar-file-format.svg' alt='rar-file'>");
