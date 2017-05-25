@@ -169,13 +169,12 @@ class FileController extends Controller
         $user_id = $file->user->id;
 
         if ( file_exists($file->path) ) {
-
-          if ($file->enc_status === 'encrypt')
-          {
-              return view('pages.decryptfile', compact('file'));
-          } else {
-              return response()->download($file->path);
-          }
+            if ($file->enc_status === 'encrypt')
+            {
+                return view('pages.decryptfile', compact('file'));
+            } else {
+                return response()->download($file->path);
+            }
 
         } else {
           return redirect('../user/' . $user_id)->with(['error' => 'File was not found']);

@@ -12,8 +12,8 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-    <link href="/alert/dist/sweetalert.css" rel="stylesheet">
-    <script src="/alert/dist/sweetalert.min.js"></script>
+    <link href="/sweetalert2/dist/sweetalert2.css" rel="stylesheet">
+    <script src="/sweetalert2/dist/sweetalert2.min.js"></script>
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 

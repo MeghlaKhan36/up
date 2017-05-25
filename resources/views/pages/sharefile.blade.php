@@ -3,7 +3,7 @@
 @section('sidebar')
     <div class="user-info-wrap">
         <h1 id="page-logo">
-            <a href="/">
+            <a href="../../user/{{ Auth::user()->id}}">
                 <img src="../../images/logo.svg" alt="Up!">
             </a>
         </h1>
@@ -26,12 +26,6 @@
                 <nav class="navigation">
                   <ul>
                       <h1 class="nav-section">Main</h1>
-                      <li>
-                        <a href="/">
-                          <i class="fa fa-home" aria-hidden="true"></i>
-                          Home
-                        </a>
-                      </li>
                       <li>
                         <a href="/user/{{ Auth::user()->id }}">
                           <i class="fa fa-user" aria-hidden="true"></i>
@@ -90,7 +84,7 @@
             <form class="auth-form edit-profile-form" role="form" method="POST" action="../../send/file/{{ $file->id }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
-                <h1 class="form-heading">Share</h1>
+                <h1 class="form-heading">Send a message</h1>
 
                 <div class="form-group{{ $errors->has('subject') ? ' has-error' : '' }}">
                     <label class="input-label">Subject</label>
@@ -108,6 +102,7 @@
                     <label class="input-label">User</label>
                     <p class="wrapper">
                         <select id="users" class="form-control" name="users">
+                            <option value="Users">Select user</option>
                             @foreach ($users as $user)
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                             @endforeach

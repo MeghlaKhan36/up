@@ -3,7 +3,7 @@
 @section('sidebar')
     <div class="user-info-wrap">
         <h1 id="page-logo">
-            <a href="/">
+            <a href="../user/{{ Auth::user()->id}}">
                 <img src="images/logo.svg" alt="Up!">
             </a>
         </h1>
@@ -26,11 +26,6 @@
                 <nav class="navigation">
                   <ul>
                       <h1 class="nav-section">Main</h1>
-                      <li>
-                        <a href="/">
-                          <i class="fa fa-home" aria-hidden="true"></i>
-                          Home
-                        </a>
                       </li>
                       <li>
                         <a href="/user/{{ Auth::user()->id }}">
@@ -146,10 +141,10 @@
                     <label class="input-label">File encryption</label>
                     <div class="checkbox">
                         <label for="enc_status">
-                            <input id="enc_status" type="radio" name="enc_status" value="encrypt"> Encrypt with OpenSSL
+                            <input id="enc_status" type="checkbox" name="enc_status" value="encrypt"> Encrypt with OpenSSL
                         </label>
                         <label for="enc_pass">
-                            <input id="enc_pass" type="password" class="form-control" name="enc_pass" value="" placeholder="Encryption password">
+                            <input id="enc_pass" type="password" class="form-control" name="enc_pass" value="" autocapitalize="off" placeholder="Encryption password">
                         </label>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 @section('sidebar')
     <div class="user-info-wrap">
         <h1 id="page-logo">
-            <a href="/">
+            <a href="../user/{{ Auth::user()->id}}">
                 <img src="/images/logo.svg" alt="Up!">
             </a>
         </h1>
@@ -28,12 +28,6 @@
                 <nav class="navigation">
                   <ul>
                       <h1 class="nav-section">Main</h1>
-                      <li>
-                        <a href="/">
-                          <i class="fa fa-home" aria-hidden="true"></i>
-                          Home
-                        </a>
-                      </li>
                       <li>
                         <a href="/user/{{ Auth::user()->id }}">
                           <i class="fa fa-user" aria-hidden="true"></i>
@@ -89,7 +83,7 @@
 
         <form class="search" method="GET" action="../search/user">
             {{ csrf_field() }}
-            <input id="search" type="text" name="search" value="" placeholder="&#xf002; Search for file or user">
+            <input id="search" type="text" name="search" value="" placeholder="&#xf002; Search">
         </form>
 
         <h1 class="main-heading">Search results for: {{ $search }}</h1>

@@ -8,6 +8,8 @@ Route::get('/', 'HomeController@home');
 Route::get('/home', 'HomeController@home');
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::post('decrypt/file/{id}', 'FileController@decryptFile');
+
     Route::get('files', 'HomeController@recentFiles');
 
     Route::get('download/{id}', 'FileController@download');
@@ -17,7 +19,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('edit/file/{id}', 'FileController@updateFile');
     Route::post('save/file/{id}', 'FileController@saveUpdatedFile');
     Route::get('delete/file/{id}', 'FileController@deleteFile');
-    Route::post('decrypt/file/{id}', 'FileController@decryptFile');
 
     Route::get('messages/{id}', 'MessageController@messageInbox');
     Route::get('share/file/{id}', 'MessageController@shareFile');

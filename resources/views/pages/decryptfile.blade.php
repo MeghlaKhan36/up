@@ -3,7 +3,7 @@
 @section('sidebar')
     <div class="user-info-wrap">
         <h1 id="page-logo">
-            <a href="/">
+            <a href="../user/{{ Auth::user()->id}}">
                 <img src="../../images/logo.svg" alt="Up!">
             </a>
         </h1>
@@ -28,12 +28,6 @@
                 <nav class="navigation">
                   <ul>
                       <h1 class="nav-section">Main</h1>
-                      <li>
-                        <a href="/">
-                          <i class="fa fa-home" aria-hidden="true"></i>
-                          Home
-                        </a>
-                      </li>
                       <li>
                         <a href="/user/{{ Auth::user()->id }}">
                           <i class="fa fa-user" aria-hidden="true"></i>
@@ -86,6 +80,7 @@
 
 @section('content')
     <div class="container">
+      <div class="decrypt-container">
         <h1 class="main-heading">The file you tried to download is encrypted, please provide password to download the file</h1>
         <div class="form-container">
             <form class="auth-form edit-profile-form" role="form" method="POST" action="../../decrypt/file/{{ $file->id }}" enctype="multipart/form-data">
@@ -108,8 +103,7 @@
                     <button type="submit" class="form-btn">Download file</button>
                 </div>
             </form>
-
         </div>
-
+      </div>
     </div>
 @endsection

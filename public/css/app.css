@@ -401,6 +401,7 @@ ul {
     background-color: #fff;
     padding: 30px 0;
     text-align: center;
+    overflow-y: auto;
 }
 
 .profile-picture {
@@ -642,7 +643,6 @@ ul {
     width: 80%;
     margin: 0 auto;
     padding-bottom: 10px;
-    background: #fff;
 }
 
 .auth-form .form-control {
@@ -655,9 +655,10 @@ ul {
     font-family: Lato;
     font-size: 16px;
     font-size: 1.6rem;
-    background-color: #ECEFF1;
+    background-color: #ecf1f5;
     color: #90A4AE;
     border: none;
+    border-bottom: 2px solid #1565C0;
     outline: none;
     box-sizing: border-box;
 }
@@ -668,8 +669,7 @@ ul {
     font-weight: 300;
     letter-spacing: 2px;
     padding: 5% 0;
-    background-color: #546E7A;
-    color: #fff;
+    color: #1565C0;
 }
 
 .form-group .checkbox {
@@ -682,7 +682,7 @@ ul {
 
 .form-btn {
     display: table;
-    width: 80%;
+    width: 40%;
     margin: 25px auto;
     text-transform: uppercase;
     background: #546E7A;
@@ -792,8 +792,6 @@ ul {
     text-align: center;
 }
 
-/* OVDJE -------------------------------------------------------------------*/
-
 .files-display {
   width: 100%;
   margin: 0 auto;
@@ -806,10 +804,13 @@ ul {
 }
 
 .file-wrap {
+  position: relative;
   width: 80%;
+  height: 225px;
   margin: 25px auto;
   padding: 20px 0;
   background: #fff;
+  transition: all 150ms ease-in-out;
 }
 
 .file-wrap p {
@@ -818,21 +819,50 @@ ul {
 }
 
 .options {
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+  bottom: 2%;
+  left: 0;
   margin-top: 15px;
+}
+
+.file-main {
+  position: absolute;
+  top: 45%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateY(-45%);
+  transition: all 150ms ease-in-out;
+}
+
+.file-wrap:hover .file-main {
+  top: 38%;
+  transition: all 150ms ease-in-out;
+}
+
+.file-wrap:hover .options {
+  visibility: visible;
+  bottom: 10%;
+  transition: all 150ms ease-in-out;
 }
 
 .file-wrap img {
   width: 90px;
   margin-bottom: 5px;
-}
-
-.file-wrap .table-icon .fa {
-  font-size: 25px;
-  font-size: 2.5rem;
+  cursor: pointer;
 }
 
 .file-wrap .table-icon.share {
-  margin-right: 25px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  color: #1565C0;
+  font-size: 20px;
+}
+
+a.file-anchor {
+  color: #093145;
 }
 
 .file-count {
@@ -858,7 +888,7 @@ ul {
 
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 1060px) {
   .file-wrap {
     width: 23%;
     margin: 1%;
@@ -866,13 +896,23 @@ ul {
 }
 
 .files-table {
-    width: 60%;
+    width: 90%;
     max-width: 1100px;
     margin: 70px auto;
     background: #fff;
     font-family: Lato;
     border-radius: 5px;
 }
+
+.files-table.msg-table {
+  margin: 30px auto;
+}
+
+ @media screen and (min-width: 1260px) {
+   .files-table {
+     width: 75%;
+   }
+ }
 
 .table-heading th{
     text-transform: uppercase;
@@ -894,7 +934,7 @@ ul {
 .table-icon {
     font-size: 18px;
     font-size: 1.8rem;
-    color: #00B0FF;
+    color: #1565C0;
     margin: 0 5px;
 }
 
@@ -941,15 +981,11 @@ ul {
     left: -25px;
 }
 
-.fa-share{
-    color: #1565C0;
-}
-
 .table-username,
 .table-title,
 .table-date {
     text-decoration: none;
-    color: #303F9F;
+    color: #1565C0;
 }
 
 .table-icon:hover,
@@ -972,7 +1008,7 @@ ul {
     font-weight: 700;
     color: #fff;
     padding: 30px 50px;
-    background-color: #90A4AE;
+    background-color: #1565C0;
     display: inline-block;
     cursor: pointer;
 }
@@ -981,6 +1017,14 @@ ul {
     font-size: 20px;
     margin-right: 10px;
 }
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+
+input:focus:-moz-placeholder { color:transparent; }
+
+input:focus::-moz-placeholder { color:transparent; }
+
+input:focus:-ms-input-placeholder { color:transparent; }
 
 #filename {
     display: inline;
@@ -1117,7 +1161,8 @@ ul {
     }
 
     .table-desc,
-    .table-date {
+    .table-time,
+    .table-time {
         display: none;
     }
 }
@@ -1133,7 +1178,7 @@ ul {
 .found-file {
     font-family: Lato;
     font-weight: 300;
-    color: #B0BEC5;
+    color: #1565C0;
 }
 
 .user-result {
@@ -1158,18 +1203,32 @@ ul {
     margin-top: 10px;
 }
 
+
+select {
+  text-align: center;
+  text-align-last: center;
+}
+
+option {
+  text-align: left;
+}
+
 .form-control.textarea {
-    height: 100px;
-    text-align: left;
+    text-align: center;
     padding: 10px;
 }
 
 .inbox-container {
-    width: 70%;
+    width: 90%;
     max-width: 1200px;
     margin: 50px auto;
     padding: 30px 20px;
-    background: #fff;
+}
+
+@media screen and (min-width: 760px) {
+  .inbox-container {
+    width: 70%;
+  }
 }
 
 .inbox-container .content {
@@ -1190,6 +1249,10 @@ ul {
     font-family: Lato;
     font-weight: 300;
     color: #90A4AE;
+}
+
+.message-heading-2 {
+  margin: 15px 0;
 }
 
 .message-info {
@@ -1241,4 +1304,9 @@ ul {
     font-size: 30px;
     font-size: 3rem;
     color: #00B0FF;
+}
+
+.decrypt-container {
+  width: 70%;
+  margin: 150px auto;
 }

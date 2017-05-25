@@ -3,7 +3,7 @@
 @section('sidebar')
     <div class="user-info-wrap">
         <h1 id="page-logo">
-            <a href="/">
+            <a href="../../user/{{ Auth::user()->id}}">
                 <img src="../../images/logo.svg" alt="Up!">
             </a>
         </h1>
@@ -26,12 +26,6 @@
                 <nav class="navigation">
                   <ul>
                       <h1 class="nav-section">Main</h1>
-                      <li>
-                        <a href="/">
-                          <i class="fa fa-home" aria-hidden="true"></i>
-                          Home
-                        </a>
-                      </li>
                       <li>
                         <a href="/user/{{ Auth::user()->id }}">
                           <i class="fa fa-user" aria-hidden="true"></i>
@@ -93,7 +87,9 @@
                 <h1 class="message-heading">Message: </h1>
             </div>
 
-            <table class="files-table">
+            <h1 class="message-heading-2">User {{ $message->user->name }} shared a file with you:</h1>
+
+            <table class="files-table msg-table">
                 <tr class="table-heading">
                     <th class="table-title">File</th>
                     <th class="table-desc">Description</th>

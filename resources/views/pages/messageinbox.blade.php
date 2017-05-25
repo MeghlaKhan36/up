@@ -3,7 +3,7 @@
 @section('sidebar')
     <div class="user-info-wrap">
         <h1 id="page-logo">
-            <a href="/">
+            <a href="../user/{{ Auth::user()->id}}">
                 <img src="/images/logo.svg" alt="Up!">
             </a>
         </h1>
@@ -26,12 +26,6 @@
                 <nav class="navigation">
                   <ul>
                       <h1 class="nav-section">Main</h1>
-                      <li>
-                        <a href="/">
-                          <i class="fa fa-home" aria-hidden="true"></i>
-                          Home
-                        </a>
-                      </li>
                       <li>
                         <a href="/user/{{ Auth::user()->id }}">
                           <i class="fa fa-user" aria-hidden="true"></i>
@@ -94,8 +88,8 @@
                 <tr class="table-heading">
                     <th class="table-title">Subject</th>
                     <th class="table-receiver">Sent to</th>
-                    <th class="table-date">Time</th>
-                    <th class="table-time">Date</th>
+                    <th class="table-time">Time</th>
+                    <th class="table-date">Date</th>
                     <th class="no-sort table-admin">
                         <i class="fa fa-cog" aria-hidden="true"></i>
                     </th>
@@ -111,7 +105,7 @@
                     </td>
                     <td class="table-username">{{ $username }}</td>
                     <td class="table-time">{{ $message->created_at->format('H:m:s') }}</td>
-                    <td class="table-time">{{ $message->created_at->format('d-M-Y') }}</td>
+                    <td class="table-date">{{ $message->created_at->format('d-M-Y') }}</td>
                     <td class="table-admin">
                         <a href="../messages/{{ Auth::user()->id }}/{{ $message->id }}" class="table-icon read">
                             <span class="icon-read">Read</span>
@@ -134,8 +128,8 @@
                 <tr class="table-heading">
                     <th class="table-title">Subject</th>
                     <th class="table-receiver">Sender</th>
-                    <th class="table-date">Time</th>
-                    <th class="table-time">Date</th>
+                    <th class="table-time">Time</th>
+                    <th class="table-date">Date</th>
                     <th class="no-sort table-admin">
                         <i class="fa fa-cog" aria-hidden="true"></i>
                     </th>
@@ -147,7 +141,7 @@
                     </td>
                     <td class="table-username">{{ $message->user->name }}</td>
                     <td class="table-time">{{ $message->created_at->format('H:m:s') }}</td>
-                    <td class="table-time">{{ $message->created_at->format('d-M-Y') }}</td>
+                    <td class="table-date">{{ $message->created_at->format('d-M-Y') }}</td>
                     <td class="table-admin">
                         <a href="../messages/{{ Auth::user()->id }}/{{ $message->id }}" class="table-icon read">
                             <span class="icon-open">Read</span>

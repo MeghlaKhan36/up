@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 $(document).ready(function() {
 
     $('#mobile-nav').on('click', function() {
@@ -34,7 +40,6 @@ $(document).ready(function() {
     $('.table-icon.delete').on('click', function(e) {
         e.preventDefault();
         var file = $(this);
-        console.log($(file).attr('href'));
         swal({
                 title: "Delete",
                 text: "You will not be able to access the file again",
@@ -54,16 +59,83 @@ $(document).ready(function() {
             });
     });
 
+    /**$('.file-anchor').on('click', function() {
+      var file_id = $(this).parent().data('id');
+      var enc_status = $(this).parent().parent().data('enc');
+
+      if ( enc_status === 'encrypted' ) {
+        swal({
+          title: 'Friendship request',
+          text: 'You wish to senendship request. If you want you can add a personal note.',
+          type: 'info',
+          input: 'textarea',
+          confirmButtonText: 'Send request',
+          showCancelButton: true,
+          showLoaderOnConfirm: true,
+          inputValidator: function(textarea) {
+              return new Promise(function(resolve, reject) {
+                  if (textarea.length>200) {
+                      reject('Your text is too long. Please use no more than 200 characters.');
+                  } else {
+                      resolve();
+                  }
+              });
+          },
+          preConfirm: function(textarea) {
+              return new Promise(function(resolve, reject) {
+
+                  // Make jQuery Ajax-request
+                  $.ajax({
+                      data       : { 'enc_pass' : textarea },
+                      method     : 'POST',
+                      url        : '/decrypt/file/' + file_id,
+                      success: function() {
+                          // Set content for success-sweetalert
+                          sa_title = 'Success!';
+                          sa_type = 'success';
+                          resolve();
+                      },
+                      error: function(response) {
+                          // Set content for failure-sweetalert
+                          sa_title = 'Oops!';
+                          sa_msg = 'Something went wrong. Please try again or contact us.';
+                          sa_type = 'error';
+                          reject('We were unable to process your request');
+                      }
+                  });
+              });
+          },
+          allowOutsideClick: false
+      }).then(function() {
+          swal({
+              // Show success or failure sweetalert
+              title: sa_title,
+              type: sa_type
+          }).then(function() {
+              // Hide button
+              $('#addfriend').hide('slow');
+//          }).done(); // Deprecated, see comment by limonte below
+          }).catch(swal.noop());
+//      }).done(); // Deprecated, see comment by limonte below
+      }).catch(swal.noop());
+
+      } else {
+        window.location.href = "../download/" + file_id;
+      }
+
+    });
+   **/
+
     $('.file-name').each(function() {
       var str = $(this).text();
-      if ( str.length > 10 ) {
-        $(this).text(str.substring(0,10) + '...');
+      if ( str.length > 25 ) {
+        $(this).text(str.substring(0,25) + '...');
       }
     });
 
     $('.file-wrap').each(function() {
       var type = $(this).attr('data-type');
-      var file = $(this);
+      var file = $(this).find('.file-anchor');
       switch(type) {
        case type = 'png':
         $(file).prepend("<img src='../images/files/picture.svg' alt='image'>");
@@ -96,13 +168,13 @@ $(document).ready(function() {
         $(file).prepend("<img src='../images/files/video.svg' alt='video-format'>");
         break;
        case type = 'waw':
-        $(file).prepend("<img src='../images/files/music.svg' alt='music-format'>");
+        $(file).prepend("<img src='../images/files/music-player.svg' alt='music-format'>");
         break;
        case type = 'mp3':
-        $(file).prepend("<img src='../images/files/music.svg' alt='music'>");
+        $(file).prepend("<img src='../images/files/music-player.svg' alt='music'>");
         break;
        case type = 'webm':
-        $(file).prepend("<img src='../images/files/music.svg' alt='music'>");
+        $(file).prepend("<img src='../images/files/music-player.svg' alt='music'>");
         break;
        case type = 'rar':
         $(file).prepend("<img src='../images/files/musicrar-file-format.svg' alt='rar-file'>");
