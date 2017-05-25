@@ -138,7 +138,7 @@ $(document).ready(function() {
       var file = $(this).find('.file-anchor');
       switch(type) {
        case type = 'png':
-        $(file).prepend("<img src='../images/files/picture.svg' alt='image'>");
+        $(file).prepend("<a href=<img src='../images/files/picture.svg' alt='image'>");
         break;
        case type = 'jpg':
         $(file).prepend("<img src='../images/files/picture.svg' alt='image'>");

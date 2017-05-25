@@ -100,6 +100,11 @@
           <div class="file-wrap" data-src="..download/{{ $file->id }}" data-type="{{ $file->file_type }}" data-enc="open">
           @endif
             <div class="file-main" data-id="{{ $file->id }}">
+          <div class="file-wrap" data-src="..download/{{ $file->id }}" data-type="{{ $file->file_type }}" data-enc="secure">
+          @else
+          <div class="file-wrap" data-src="..download/{{ $file->id }}" data-type="{{ $file->file_type }}">
+          @endif
+            <div class="file-main">
               <a class="file-anchor" href="../download/{{ $file->id }}">
                 <h1 class="file-name">{{ $file->org_name }}</h1>
               </a>
