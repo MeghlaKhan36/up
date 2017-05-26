@@ -48,15 +48,12 @@ $(document).ready(function() {
                 confirmButtonColor: "#00B0FF",
                 confirmButtonText: "Delete",
                 closeOnConfirm: true
-            },
-            function(isConfirm){
-                if ( isConfirm ) {
-                    file.parent().parent().hide();
-                    $.ajax({
-                        url: $(file).attr('href')
-                    });
-                }
-            });
+        }).then(function () {
+              $.ajax({
+                  $(this).css('display', 'none');
+                  url: $(file).attr('href')
+              });
+        });
     });
 
     /**$('.file-anchor').on('click', function() {

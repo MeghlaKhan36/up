@@ -99,6 +99,7 @@
                     $user = $allUsers->where('id', '=', $message->receiver_id)->first();
                     $username = $user->name;
                 @endphp
+                @if ( $message->receiver_deleted === 0 )
                 <tr class="info-row">
                     <td class="table-subject">
                         <a href="../messages/{{ Auth::user()->id }}/{{ $message->id }}" class="table-icon read">{{ $message->subject }}</a>
@@ -111,12 +112,13 @@
                             <span class="icon-read">Read</span>
                             <i class="fa fa-envelope-o" aria-hidden="true"></i>
                         </a>
-                        <a class="table-icon delete" data-url="../delete/message/{{ $message->id }}">
+                        <a class="table-icon delete" href="../delete/message/{{ $message->id }}">
                             <span class="icon-delete">Delete</span>
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>
+                @endif
             @endforeach
             </table>
         @else
@@ -135,6 +137,7 @@
                     </th>
                 </tr>
             @foreach( $receivedMessages as $message )
+              @if ( $message->receiver_deleted === 0 )
                 <tr class="info-row">
                     <td class="table-subject">
                         <a href="../messages/{{ Auth::user()->id }}/{{ $message->id }}" class="table-icon read">{{ $message->subject }}</a>
@@ -147,12 +150,13 @@
                             <span class="icon-open">Read</span>
                             <i class="fa fa-envelope-o" aria-hidden="true"></i>
                         </a>
-                        <a class="table-icon delete" data-url="../delete/message/{{ $message->id }}">
+                        <a class="table-icon delete" href="../delete/message/{{ $message->id }}">
                             <span class="icon-delete">Delete</span>
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>
+              @endif
             @endforeach
             </table>
         @else
