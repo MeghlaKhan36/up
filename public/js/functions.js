@@ -40,6 +40,7 @@ $(document).ready(function() {
     $('.table-icon.delete').on('click', function(e) {
         e.preventDefault();
         var file = $(this);
+        $(file).css('display', 'none');
         swal({
                 title: "Delete",
                 text: "You will not be able to access the file again",
@@ -50,7 +51,6 @@ $(document).ready(function() {
                 closeOnConfirm: true
         }).then(function () {
               $.ajax({
-                  $(this).css('display', 'none');
                   url: $(file).attr('href')
               });
         });
