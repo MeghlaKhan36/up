@@ -93,7 +93,6 @@
               Login
             </a>
           </div>
-          <a class="forgot-password" href="password/reset">Forgot your password?</a>
         </div>
       </div>
     </section>

@@ -49,7 +49,11 @@ class MessageController extends Controller
         $file_name = File::find($file_id)->org_name;
         $download_url = 'https://up-ncerovski.herokuapp.com/download/' . $file_id;
 
-        Mail::to($receiver_user->email)->send(new MyMail($sender_user->name, $receiver_user->name, $file_name, $message_text, $download_url));
+        Mail::to($receiver_user->email)
+          ->send(new SendMail(
+            $sender_user->name, $receiver_user->name, $file_name, $message_text, $download_url
+          )
+        );
 
         return redirect('/messages/' . $sender_id)->with('status', 'Message sent!');
     }

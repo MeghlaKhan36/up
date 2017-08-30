@@ -39,18 +39,9 @@
               </div>
 
               <div class="form-group">
-                  <div class="checkbox">
-                      <label>
-                          <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                      </label>
-                  </div>
-              </div>
-
-              <div class="form-group">
                   <button type="submit" class="form-btn">Login</button>
               </div>
           </form>
-          <a class="reset-password" href="{{ route('password.request') }}">Forgot Your Password?</a>
           <h2>Not a member?<a class="alt-text" href="{{ route('register') }}"> Sign up</a></h2>
       </div>
 
